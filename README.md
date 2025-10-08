@@ -37,8 +37,7 @@ Create a fully functional **API** using **C#** and **.NET**, inspired by the boo
 To raise the stakes, I'm not just building this API locally.  
 I'm also planning to:
 
-- 🛠️ Set up a **CI/CD pipeline**:
-  - Azure DevOps  
+- 🛠️ Set up a **CI/CD pipeline** using **Azure DevOps**  
 - 📦 **Containerize** the API  
 - 🚀 **Deploy it to my Hostinger VPS**  
 - 🌐 Make it publicly accessible at:  
