@@ -26,7 +26,7 @@ Create a fully functional **API** using **C#** and **.NET**, inspired by the boo
 ## 🗓️ Timeline
 
 - **Start Date:** October 7th, 2025  
-- **Target Completion:** **November 15th, 2025**
+- **Target Completion:** **November 30th, 2025**
 
 ⏱️ That gives me just **under 40 days** to go from novice to deploying a live API!
 
@@ -37,9 +37,8 @@ Create a fully functional **API** using **C#** and **.NET**, inspired by the boo
 To raise the stakes, I'm not just building this API locally.  
 I'm also planning to:
 
-- 🛠️ Set up a **CI/CD pipeline** using either:
-  - Jenkins  
-  - Azure DevOps *(TBD)*  
+- 🛠️ Set up a **CI/CD pipeline**:
+  - Azure DevOps  
 - 📦 **Containerize** the API  
 - 🚀 **Deploy it to my Hostinger VPS**  
 - 🌐 Make it publicly accessible at:  
@@ -49,7 +48,7 @@ I'm also planning to:
 
 ## 🤓 The Catch?
 
-I **barely know** C# or .NET right now...  
+I **barely know** C#, .NET and GitHub Actions right now...  
 But that’s what makes this challenge *awesome*.
 
 ---
