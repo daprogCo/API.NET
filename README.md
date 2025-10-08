@@ -6,9 +6,11 @@
 
 ## 👤 About Me
 
-Hi! I'm a **Power Platform Developer** at **CGI**, with **over two years** of professional experience building business applications, automations, and custom solutions.
+👋 Hi, I'm **David Savard** — a **Power Platform Developer** at **CGI**, with **over two years** of professional experience building business applications, automations, and custom solutions.
 
 🎓 I also completed a **Data Engineer** formation at **Collège Bois-de-Boulogne**, where I deepened my understanding of data infrastructure, ETL pipelines, and cloud technologies.
+
+🔗 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/david-savard-1b3a96274/)
 
 This project is my personal challenge to break into **C#** and **.NET** development—because growth happens outside the comfort zone. 💪
 
@@ -69,5 +71,3 @@ From zero to deploying an API in production, while mastering:
 
 More updates to come. Let’s see how far I can go in just over a month!  
 **Challenge accepted.**
-
-
