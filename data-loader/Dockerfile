@@ -15,3 +15,6 @@ RUN apt-get update && \
 
 # Set workdir and add optional test script
 WORKDIR /app
+
+# Copy init.sql script
+COPY init.sql ./init.sql
