@@ -1,17 +1,31 @@
-version: "3.8"
+version: "3.9"
 
 services:
   sqlserver:
-    container_name: sql_server_container
     image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      SA_PASSWORD: "${SA_PASSWORD}"
+      ACCEPT_EULA: "Y"
     ports:
       - "1433:1433"
-    environment:
-      SA_PASSWORD: ${SA_PASSWORD}
-      ACCEPT_EULA: Y
     volumes:
-      - sql-server-data:/var/opt/mssql
-    restart: unless-stopped
+      - sql_data:/var/opt/mssql
+    networks:
+      - backend
+
+  dataloader:
+    build:
+      context: ./data-loader
+    container_name: dataloader
+    depends_on:
+      - sqlserver
+    networks:
+      - backend
+    tty: true
 
 volumes:
-  sql-server-data:
+  sql_data:
+
+networks:
+  backend:
