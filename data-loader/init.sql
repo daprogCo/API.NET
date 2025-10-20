@@ -1,9 +1,9 @@
 -- Step 1: Create the 'Cars' database
-CREATE DATABASE Cars_Temp;
+CREATE DATABASE Cars;
 GO
 
 -- Step 2: Switch context to the new 'Cars' database
-USE Cars_Temp;
+USE Cars;
 GO
 
 -- Step 3: Create the 'Car' table
