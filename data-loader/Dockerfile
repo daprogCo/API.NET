@@ -16,5 +16,12 @@ RUN apt-get update && \
 # Set workdir and add optional test script
 WORKDIR /app
 
-# Copy init.sql script
+# Copy the initialization scripts
 COPY init.sql ./init.sql
+COPY entrypoint.sh ./entrypoint.sh
+
+# Make the entrypoint script executable
+RUN chmod +x ./entrypoint.sh
+
+# Set the entrypoint
+ENTRYPOINT ["./entrypoint.sh"]

@@ -13,16 +13,24 @@ services:
       - sql_data:/var/opt/mssql
     networks:
       - backend
+    healthcheck:
+      test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/localhost/1433"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
 
   dataloader:
     build:
       context: ./data-loader
     container_name: dataloader
     depends_on:
-      - sqlserver
+      sqlserver:
+        condition: service_healthy
     networks:
       - backend
     tty: true
+    environment:
+      SA_PASSWORD: "${SA_PASSWORD}"
 
 volumes:
   sql_data:
