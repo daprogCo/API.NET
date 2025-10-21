@@ -53,4 +53,8 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 
+# Kaggle API key file
+data-loader/kaggle.json
+
+# Environment variables file
 .env
