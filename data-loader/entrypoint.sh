@@ -1,40 +1,65 @@
 #!/bin/bash
 
 DB_NAME="Cars"
+SQLCMD=(
+  /opt/mssql-tools/bin/sqlcmd
+  -S sqlserver
+  -U sa
+  -P "$SA_PASSWORD"
+)
 
-echo "⏳ Waiting for SQL Server to accept connections..."
-for i in {1..30}; do
-    /opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P "$SA_PASSWORD" -Q "SELECT 1" > /dev/null 2>&1
-    if [ $? -eq 0 ]; then
-        echo "✅ SQL Server is ready to accept connections."
-        break
+wait_for_sqlserver() {
+    printf "⏳ Waiting for SQL Server to accept connections...\n"
+    for i in {1..30}; do
+        if "${SQLCMD[@]}" -Q "SELECT 1" > /dev/null 2>&1; then
+            printf "✅ SQL Server is ready to accept connections.\n"
+            return 0
+        fi
+        printf "❌ SQL Server not ready yet (attempt %d), retrying in 2s...\n" "$i"
+        sleep 2
+    done
+    printf "💥 SQL Server did not become ready in time. Exiting.\n" >&2
+    return 1
+}
+
+check_database_exists() {
+    local result;
+    result=$("${SQLCMD[@]}" -h -1 -W -Q "SET NOCOUNT ON; SELECT name FROM sys.databases WHERE name = '$DB_NAME';" 2>/dev/null)
+    result=$(printf "%s" "$result" | sed 's/\r//g')
+    if [[ "$result" == "$DB_NAME" ]]; then
+        return 0
     fi
-    echo "❌ SQL Server not ready yet (attempt $i), retrying in 2s..."
-    sleep 2
-done
+    return 1
+}
 
-if [ $i -eq 30 ]; then
-    echo "💥 SQL Server did not become ready in time. Exiting."
-    exit 1
-fi
-
-echo "🔍 Checking if database '$DB_NAME' already exists..."
-/opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P "$SA_PASSWORD" -Q "SELECT name FROM sys.databases WHERE name = '$DB_NAME';" -h -1 > /tmp/db_check.txt
-
-if grep -q "^$DB_NAME$" /tmp/db_check.txt; then
-    echo "✅ Database '$DB_NAME' already exists. Skipping initialization script."
-else
-    echo "🚀 Database not found. Executing /app/init.sql..."
-    /opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P "$SA_PASSWORD" -i /app/init.sql
-    if [ $? -eq 0 ]; then
-        echo "✅ init.sql executed successfully."
+run_init_sql() {
+    printf "🚀 Database not found. Executing /app/init.sql...\n"
+    if "${SQLCMD[@]}" -i /app/init.sql; then
+        printf "✅ init.sql executed successfully.\n"
     else
-        echo "❌ Failed to execute init.sql."
-        exit 1
+        printf "❌ Failed to execute init.sql.\n" >&2
+        return 1
     fi
-fi
+}
 
-# Keep the container alive for inspection/debugging
-tail -f /dev/null
+main() {
+    if ! wait_for_sqlserver; then
+        return 1
+    fi
+
+    printf "🔍 Checking if database '%s' already exists...\n" "$DB_NAME"
+    if check_database_exists; then
+        printf "✅ Database '%s' already exists. Skipping initialization script.\n" "$DB_NAME"
+    else
+        if ! run_init_sql; then
+            return 1
+        fi
+    fi
+
+    tail -f /dev/null
+}
+
+main
+
 
 
