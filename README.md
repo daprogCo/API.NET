@@ -2,6 +2,8 @@
 
 > *"Turning curiosity into code, one endpoint at a time..."*
 
+
+⬇️ Faites défiler vers le bas pour la version française
 ---
 
 ## 👤 About Me
@@ -79,12 +81,13 @@ Please refer to the [`SETUP.md`](./SETUP.md) file for a complete step-by-step gu
 
 > 🛠️ Includes environment setup, dependencies, configuration, and local execution steps.
 
-------
+---
 
 # 🇫🇷 API.NET — Apprendre C# en construisant un vrai projet !
 
 > *« Transformer la curiosité en code, une requête à la fois… »*
 
+⬆️ Scroll up for the English version
 ---
 
 ## 👤 À propos de moi
