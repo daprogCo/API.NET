@@ -1,4 +1,4 @@
-# 🚀 API.NET — Learning C# by Building Real!
+# API.NET — Learning C# by Building Real!
 
 > *"Turning curiosity into code, one endpoint at a time..."*
 
@@ -83,7 +83,7 @@ Please refer to the [`SETUP.md`](./SETUP.md) file for a complete step-by-step gu
 
 ---
 
-# 🇫🇷 API.NET — Apprendre C# en construisant un vrai projet !
+# API.NET — Apprendre C# en construisant un vrai projet !
 
 > *« Transformer la curiosité en code, une requête à la fois… »*
 
@@ -163,7 +163,6 @@ Des mises à jour arrivent bientôt. On va voir jusqu’où je peux aller en un 
 ## 📄 Instructions de déploiement
 
 Vous souhaitez exécuter cette API en local ?  
-Consultez le fichier [`SETUP.md`](./SETUP.md) pour un guide complet étape par étape.
+Consultez le fichier [`SETUP_FR.md`](./SETUP_FR.md) pour un guide complet étape par étape.
 
 > 🛠️ Inclut la configuration de l’environnement, les dépendances, et les étapes d'exécution en local.
-
