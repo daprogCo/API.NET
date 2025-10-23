@@ -28,7 +28,7 @@ Create a fully functional **API** using **C#** and **.NET**, inspired by the boo
 - **Start Date:** October 7th, 2025  
 - **Target Completion:** **November 30th, 2025**
 
-⏱️ That gives me just **under 40 days** to go from novice to deploying a live API!
+⏱️ That gives me just **under 55 days** to go from novice to deploying a live API!
 
 ---
 
@@ -110,7 +110,7 @@ Créer une **API fonctionnelle** avec **C#** et **.NET**, en suivant le livre :
 - **Date de début :** 7 octobre 2025  
 - **Date cible de fin :** **30 novembre 2025**
 
-⏱️ Cela me donne **moins de 40 jours** pour passer de débutant à une API en ligne !
+⏱️ Cela me donne **moins de 55 jours** pour passer de débutant à une API en ligne !
 
 ---
 
