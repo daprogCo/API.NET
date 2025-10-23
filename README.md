@@ -37,11 +37,11 @@ Create a fully functional **API** using **C#** and **.NET**, inspired by the boo
 To raise the stakes, I'm not just building this API locally.  
 I'm also planning to:
 
-- 🛠️ Set up a **CI/CD pipeline** using **Azure DevOps**  
+- 🛠️ Set up a **CI/CD pipeline**
 - 📦 **Containerize** the API  
 - 🚀 **Deploy it to my Hostinger VPS**  
 - 🌐 Make it publicly accessible at:  
-  **[`https://daprog.co/api.net-project`](https://daprog.co/api.net-project)**
+  **[`https://api.daprog.co`](https://api.daprog.co)**
 
 ---
 
@@ -119,13 +119,11 @@ Créer une **API fonctionnelle** avec **C#** et **.NET**, en suivant le livre :
 Pour augmenter la difficulté, je ne vais pas seulement développer localement.  
 Je prévois aussi de :
 
-- 🛠️ Mettre en place une **pipeline CI/CD** avec :
-  - Jenkins  
-  - ou Azure DevOps *(à déterminer)*  
+- 🛠️ Mettre en place une **pipeline CI/CD**
 - 📦 **Conteneuriser** l'API  
 - 🚀 La **déployer sur mon VPS Hostinger**  
 - 🌐 La rendre accessible publiquement à l'adresse :  
-  **[`https://daprog.co/api.net-project`](https://daprog.co/api.net-project)**
+  **[`https://api.daprog.co`](https://api.daprog.co)**
 
 ---
 
