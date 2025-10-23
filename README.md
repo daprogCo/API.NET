@@ -108,7 +108,7 @@ Créer une **API fonctionnelle** avec **C#** et **.NET**, en suivant le livre :
 ## 🗓️ Échéancier
 
 - **Date de début :** 7 octobre 2025  
-- **Date cible de fin :** **15 novembre 2025**
+- **Date cible de fin :** **30 novembre 2025**
 
 ⏱️ Cela me donne **moins de 40 jours** pour passer de débutant à une API en ligne !
 
