@@ -1,8 +1,8 @@
-# API.NET — Learning C# by Building Real!
+# API.NET — Learning C# by Building Real! {#english-version}
 
 > *"Turning curiosity into code, one endpoint at a time..."*
 
-[⬇️ Version Française](#api-net--apprendre-c-en-construisant-un-vrai-projet-)
+[⬇️ Version Française](#version‑francaise)
 ---
 
 ## 👤 About Me
@@ -82,11 +82,11 @@ Please refer to the [`SETUP.md`](./SETUP.md) file for a complete step-by-step gu
 
 ---
 
-# API.NET — Apprendre C# en construisant un vrai projet !
+# API.NET — Apprendre C# en construisant un vrai projet ! {#version‑francaise}
 
 > *« Transformer la curiosité en code, une requête à la fois… »*
 
-[⬆️ English Version](#api-net--learning-c-by-building-real)
+[⬆️ English Version](#english-version)
 ---
 
 ## 👤 À propos de moi
