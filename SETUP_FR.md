@@ -23,7 +23,7 @@ cp .env.example .env
 Éditez le fichier `.env` et ajoutez la variable suivante :
 
 ```env
-SA_PASSWORD=YourStrong!Passw0rd
+SA_PASSWORD=VotreMotdePasseRobuste
 ```
 
 Utilisez un mot de passe robuste qui respecte les exigences de complexité de SQL Server.  
@@ -137,4 +137,5 @@ Pour ouvrir un terminal dans le conteneur `dataloader` :
 
 ```bash
 docker exec -it dataloader bash
+
 ```
