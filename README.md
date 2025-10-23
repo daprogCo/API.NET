@@ -2,8 +2,7 @@
 
 > *"Turning curiosity into code, one endpoint at a time..."*
 
-
-⬇️ Faites défiler vers le bas pour la version française
+[⬇️ Version Française](#api-net--apprendre-c-en-construisant-un-vrai-projet-)
 ---
 
 ## 👤 About Me
@@ -87,7 +86,7 @@ Please refer to the [`SETUP.md`](./SETUP.md) file for a complete step-by-step gu
 
 > *« Transformer la curiosité en code, une requête à la fois… »*
 
-⬆️ Scroll up for the English version
+[⬆️ English Version](#api-net--learning-c-by-building-real)
 ---
 
 ## 👤 À propos de moi
