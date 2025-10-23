@@ -23,7 +23,7 @@ cp .env.example .env
 Edit the `.env` file and add the following variable:
 
 ```env
-SA_PASSWORD=YourStrong!Passw0rd
+SA_PASSWORD=YourStrongPassw0rd
 ```
 
 Use a strong password that meets SQL Server's complexity requirements.  
@@ -137,4 +137,5 @@ To open a shell inside the dataloader container:
 
 ```bash
 docker exec -it dataloader bash
+
 ```
