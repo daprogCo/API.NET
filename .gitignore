@@ -58,3 +58,6 @@ data-loader/kaggle.json
 
 # Environment variables file
 .env
+
+# Jenkins file
+Jenkinsfile
