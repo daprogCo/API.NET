@@ -11,6 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Debug host DNS
+        run: |
+          echo "Testing DNS resolution for ${{ secrets.VPS_HOST }}"
+          ping -c 3 $(echo ${{ secrets.VPS_HOST }} | cut -d@ -f2)
+          
       - name: Set up SSH key
         run: |
           mkdir -p ~/.ssh
