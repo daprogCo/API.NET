@@ -1,4 +1,4 @@
-name: Deploy to VPS
+name: Deploy to VPS (Test Fast)
 
 on:
   push:
@@ -7,20 +7,19 @@ on:
 
 jobs:
   deploy:
-    name: Deploy Project on VPS
+    name: Quick Deploy to VPS
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set up SSH key
+      - name: Set up SSH key (no known_hosts)
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H $(echo "${{ secrets.VPS_HOST }}" | cut -d@ -f2) >> ~/.ssh/known_hosts
 
-      - name: Deploy via SSH
+      - name: Deploy via SSH (no host check)
         run: |
-          ssh -o StrictHostKeyChecking=yes ${{ secrets.VPS_HOST }} << 'EOF'
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_HOST }} << 'EOF'
             echo "🔄 Pulling latest code..."
             cd ~/Projects/API.NET
 
