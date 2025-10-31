@@ -1,4 +1,4 @@
-name: Test SSH to VPS
+name: SSH Debug to VPS
 
 on:
   push:
@@ -6,24 +6,24 @@ on:
       - master
 
 jobs:
-  test-ssh:
-    name: SSH Connection Test
+  ssh-debug:
+    name: SSH Connection Debug
     runs-on: ubuntu-latest
 
     steps:
-      - name: Debug host DNS
-        run: |
-          echo "Testing DNS resolution for ${{ secrets.VPS_HOST }}"
-          ping -c 3 $(echo ${{ secrets.VPS_HOST }} | cut -d@ -f2)
-          
       - name: Set up SSH key
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan -H $(echo "${{ secrets.VPS_HOST }}" | cut -d@ -f2) >> ~/.ssh/known_hosts
 
-      - name: Test SSH connection
+      - name: Test DNS resolution and ping
         run: |
-          ssh -o StrictHostKeyChecking=yes ${{ secrets.VPS_HOST }} "echo '✅ SSH connection from GitHub Actions successful!'"
+          echo "🔍 Testing DNS resolution..."
+          ping -c 3 $(echo "${{ secrets.VPS_HOST }}" | cut -d@ -f2) || echo "⚠️ Ping failed (may be firewalled)."
 
+      - name: Manual SSH debug
+        run: |
+          echo "🚀 Attempting SSH connection with verbose output..."
+          ssh -v -o StrictHostKeyChecking=yes ${{ secrets.VPS_HOST }} "echo '✅ Connected to VPS'"
