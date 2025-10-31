@@ -1,4 +1,4 @@
-name: SSH Debug to VPS
+name: Deploy to VPS
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - master
 
 jobs:
-  ssh-debug:
-    name: SSH Connection Debug
+  deploy:
+    name: Deploy Project on VPS
     runs-on: ubuntu-latest
 
     steps:
@@ -18,12 +18,22 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H $(echo "${{ secrets.VPS_HOST }}" | cut -d@ -f2) >> ~/.ssh/known_hosts
 
-      - name: Test DNS resolution and ping
+      - name: Deploy via SSH
         run: |
-          echo "🔍 Testing DNS resolution..."
-          ping -c 3 $(echo "${{ secrets.VPS_HOST }}" | cut -d@ -f2) || echo "⚠️ Ping failed (may be firewalled)."
+          ssh -o StrictHostKeyChecking=yes ${{ secrets.VPS_HOST }} << 'EOF'
+            echo "🔄 Pulling latest code..."
+            cd ~/Projects/API.NET
 
-      - name: Manual SSH debug
-        run: |
-          echo "🚀 Attempting SSH connection with verbose output..."
-          ssh -v -o StrictHostKeyChecking=yes ${{ secrets.VPS_HOST }} "echo '✅ Connected to VPS'"
+            git pull
+
+            echo "🧹 Stopping existing containers..."
+            docker-compose down
+
+            echo "🏗️ Rebuilding containers (no cache)..."
+            docker-compose build --no-cache
+
+            echo "🚀 Starting containers..."
+            docker-compose up -d
+
+            echo "✅ Deployment complete!"
+          EOF
