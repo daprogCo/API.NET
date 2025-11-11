@@ -2,8 +2,11 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy everything and restore dependencies
-COPY . .
+# Copy the dotnet-api folder into the container
+COPY dotnet-api/ ./dotnet-api/
+
+# Change directory into the project folder and restore
+WORKDIR /src/dotnet-api
 RUN dotnet restore
 
 # Publish the app (Release mode)
