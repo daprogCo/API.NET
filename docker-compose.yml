@@ -32,6 +32,16 @@ services:
     environment:
       SA_PASSWORD: "${SA_PASSWORD}"
 
+  dotnet-api:
+    build:
+      context: ./api
+    container_name: dotnet-api
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./api:/app
+    tty: true
+
 volumes:
   sql_data:
 
