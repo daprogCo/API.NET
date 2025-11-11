@@ -41,6 +41,9 @@ services:
     volumes:
       - ./api:/app
     tty: true
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
 
 volumes:
   sql_data:
