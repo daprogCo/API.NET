@@ -19,7 +19,7 @@ COPY --from=build /app/publish .
 # Expose port
 EXPOSE 8080
 
-# Start the app
+# Start the .NET app
 ENTRYPOINT ["dotnet", "dotnet-api.dll"]
 
 
