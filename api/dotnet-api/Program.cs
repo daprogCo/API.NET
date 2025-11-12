@@ -20,5 +20,5 @@ app.UseAuthorization();
 // API endpoints
 app.MapControllers();
 
-// 🏁 Start the app (host and port controlled by env or launch config)
+// 🏁 Start the app (host and port controlled by env or launch config.)
 app.Run();
