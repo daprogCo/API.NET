@@ -1,23 +1,24 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+// Add services to the container
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// 🔧 Always enable Swagger (even in production)
+app.UseSwagger();
+app.UseSwaggerUI();
 
+// ✅ Optional: Root message for testing with curl
+app.MapGet("/", () => Results.Ok("✅ .NET API is running and reachable!"));
+
+// Authorization (if needed)
 app.UseAuthorization();
 
+// API endpoints
 app.MapControllers();
 
+// 🏁 Start the app (host and port controlled by env or launch config)
 app.Run();
