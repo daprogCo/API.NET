@@ -6,7 +6,9 @@ FROM '/tmp/Automobile.csv'
 WITH (
     FIRSTROW = 2,
     FIELDTERMINATOR = ',',
-    ROWTERMINATOR = '0x0A'
+    ROWTERMINATOR = '0x0D0A',
+    TABLOCK
 );
+GO
 
 GO

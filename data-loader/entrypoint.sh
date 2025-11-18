@@ -89,25 +89,27 @@ check_table_empty() {
 }
 
 download_and_extract_csv() {
-    printf "📦 Downloading dataset from Kaggle...\n"
-    if ! kaggle datasets download -d "$KAGGLE_DATASET" -p /tmp > /dev/null; then
-        printf "❌ Failed to download dataset from Kaggle.\n" >&2
+    printf "📦 Downloading CSV directly from Kaggle...\n"
+
+    # Download ONLY the CSV file
+    if ! kaggle datasets files "$KAGGLE_DATASET" \
+        -f "$CSV_NAME" \
+        -p /tmp \
+        --quiet; then
+        printf "❌ Failed to download CSV from Kaggle.\n" >&2
         return 1
     fi
 
-    printf "🗃️ Extracting dataset...\n"
-    if ! unzip -o /tmp/*.zip -d /tmp > /dev/null; then
-        printf "❌ Failed to unzip dataset.\n" >&2
-        return 1
-    fi
-
+    # Verify presence
     if [[ ! -f "$CSV_PATH" ]]; then
-        printf "❌ CSV file '%s' not found after extraction.\n" "$CSV_PATH" >&2
+        printf "❌ CSV file '%s' not found after download.\n" "$CSV_PATH" >&2
         return 1
     fi
 
+    printf "✅ CSV downloaded successfully: %s\n" "$CSV_PATH"
     return 0
 }
+
 
 import_csv_to_sql() {
     printf "📥 Importing CSV data into SQL Server...\n"
