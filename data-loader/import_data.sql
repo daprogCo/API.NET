@@ -8,4 +8,5 @@ WITH (
     FIELDTERMINATOR = ',',
     ROWTERMINATOR = '0x0A'
 );
+
 GO
