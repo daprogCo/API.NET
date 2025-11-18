@@ -25,6 +25,7 @@ RUN chmod 600 /root/.kaggle/kaggle.json
 # Copy the initialization scripts
 COPY init.sql ./init.sql
 COPY entrypoint.sh ./entrypoint.sh
+COPY import_data.sql ./import_data.sql
 
 # Make the scripts executable
 RUN chmod +x /app/*.sh

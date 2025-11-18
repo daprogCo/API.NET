@@ -34,6 +34,9 @@ main() {
             return 1
         fi
         printf "✅ CSV file is now available at: %s\n" "$CSV_PATH"
+        if ! import_csv_to_sql; then
+            return 1
+        fi
     else
         printf "✅ Table '%s' already has data. Skipping download.\n" "$TABLE_NAME"
     fi
@@ -104,6 +107,23 @@ download_and_extract_csv() {
     fi
 
     return 0
+}
+
+import_csv_to_sql() {
+    printf "📥 Importing CSV data into SQL Server...\n"
+
+    if [ ! -f "$CSV_PATH" ]; then
+        printf "❌ CSV file '%s' not found. Cannot import.\n" "$CSV_PATH" >&2
+        return 1
+    fi
+
+    if "${SQLCMD[@]}" -d "$DB_NAME" -i /app/import_data.sql > /dev/null; then
+        printf "✅ CSV data imported successfully.\n"
+        return 0
+    else
+        printf "❌ Failed to import CSV data.\n" >&2
+        return 1
+    fi
 }
 
 main
