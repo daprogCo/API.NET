@@ -6,7 +6,7 @@
 
 ## 👤 About Me
 
-👋 Hi, I'm **David Savard** — a **Power Platform Developer** for **CGI**, with **over two years** of professional experience building business applications, automations, and custom solutions.
+👋 Hi, I'm **David Savard** — a **Power Platform Developer** at **CGI**, with **over two years** of professional experience building business applications, automations, and custom solutions.
 
 🎓 I also completed a **Data Engineer** formation at **Collège Bois-de-Boulogne**, where I deepened my understanding of data infrastructure, ETL pipelines, and cloud technologies.
 
