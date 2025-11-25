@@ -34,6 +34,39 @@ app.MapGet("/dbtest", async () =>
     }
 });
 
+app.MapGet("/cars-test", async () =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+    var results = new List<object>();
+
+    try
+    {
+        using var conn = new SqlConnection(connectionString);
+        await conn.OpenAsync();
+
+        var cmd = new SqlCommand("SELECT TOP 5 Id, Name, Mpg, Cylinders FROM Car WHERE is_deleted IS NULL", conn);
+
+        using var reader = await cmd.ExecuteReaderAsync();
+        while (await reader.ReadAsync())
+        {
+            results.Add(new
+            {
+                Id = reader.GetInt32(0),
+                Name = reader.GetString(1),
+                Mpg = reader.GetDecimal(2),
+                Cylinders = reader.GetInt32(3)
+            });
+        }
+
+        return Results.Ok(results);
+    }
+    catch (Exception ex)
+    {
+        return Results.Problem("❌ Error reading data from SQL Server: " + ex.Message);
+    }
+});
+
 // Authorization (if needed)
 app.UseAuthorization();
 
