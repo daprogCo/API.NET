@@ -45,7 +45,7 @@ app.MapGet("/cars-test", async () =>
         using var conn = new SqlConnection(connectionString);
         await conn.OpenAsync();
 
-        var cmd = new SqlCommand("SELECT TOP 5 Id, Name, Mpg, Cylinders FROM Car WHERE is_deleted IS NULL", conn);
+        var cmd = new SqlCommand("SELECT TOP 5 Id, Name, Mpg, Cylinders FROM Car", conn);
 
         using var reader = await cmd.ExecuteReaderAsync();
         while (await reader.ReadAsync())
