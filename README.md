@@ -21,14 +21,43 @@ This project is my personal challenge to break into **C#** and **.NET** developm
 Create a fully functional **API** using **C#** and **.NET**, inspired by the book:  
 📘 [*Programming APIs with C# and .NET*](https://www.packtpub.com/en-us/product/programming-apis-with-c-and-net-9781803231099) by *Packt*.
 
+The current functional goal is to build a **Car API** backed by SQL Server, exposing the car dataset through clear REST endpoints and preparing the project for production-oriented practices such as CI/CD, containerization, and VPS deployment.
+
 ---
 
-## 🗓️ Timeline
+## 🚗 Car Resource Scope
 
-- **Start Date:** October 7th, 2025  
-- **Target Completion:** **November 30th, 2025**
+The `Car` resource is the core domain of this project.
 
-⏱️ That gives me just **under 55 days** to go from novice to deploying a live API!
+### Exposure Rules
+
+- All columns of the `Car` resource will be exposed through the API
+- The only exception is the `is_deleted` column, which will remain internal and will not be exposed publicly
+
+### Initial Read Endpoints
+
+The first implementation phase focuses on `GET` endpoints:
+
+- `GET /cars`
+  - Returns the full list of cars
+- `GET /cars/{id}`
+  - Returns a single car by its unique identifier
+- `GET /cars/search`
+  - Supports filtering by:
+    - `name` → contains a keyword such as `dodge`
+    - `origin` → exact match such as `usa`
+    - `mpg` → numeric filter such as `<= 20`
+
+### Planned Write Endpoints
+
+After the initial read endpoints, the API will also support data modification:
+
+- `POST /cars`
+  - Adds a new entry to the database
+- `PUT /cars/{id}`
+  - Updates an existing entry by its ID
+- `DELETE /cars/{id}`
+  - Deletes an existing entry by its ID
 
 ---
 
@@ -65,10 +94,9 @@ From zero to deploying an API in production, while mastering:
 
 ---
 
-## 📌 Stay Tuned
+## 📌 Current Direction
 
-More updates to come. Let’s see how far I can go in just over a month!  
-**Challenge accepted.**
+The project is moving toward a practical, data-driven API centered around a real `Car` resource, with progressively richer querying and full CRUD support.
 
 ---
 
@@ -103,14 +131,43 @@ Ce projet est mon défi personnel pour me lancer dans le développement **C#** e
 Créer une **API fonctionnelle** avec **C#** et **.NET**, en suivant le livre :  
 📘 [*Programming APIs with C# and .NET*](https://www.packtpub.com/en-us/product/programming-apis-with-c-and-net-9781803231099) publié par *Packt*.
 
+L’objectif fonctionnel actuel est de construire une **API Car** appuyée sur SQL Server, qui expose le jeu de données des voitures à travers des endpoints REST clairs, tout en préparant le projet à des pratiques orientées production comme la CI/CD, la conteneurisation et le déploiement sur VPS.
+
 ---
 
-## 🗓️ Échéancier
+## 🚗 Portée de la ressource Car
 
-- **Date de début :** 7 octobre 2025  
-- **Date cible de fin :** **30 novembre 2025**
+La ressource `Car` est le domaine central de ce projet.
 
-⏱️ Cela me donne **moins de 55 jours** pour passer de débutant à une API en ligne !
+### Règles d’exposition
+
+- Toutes les colonnes de la ressource `Car` seront exposées par l’API
+- La seule exception est la colonne `is_deleted`, qui restera interne et ne sera pas exposée publiquement
+
+### Premiers endpoints de lecture
+
+La première phase d’implantation se concentre sur des endpoints `GET` :
+
+- `GET /cars`
+  - Retourne la liste complète des voitures
+- `GET /cars/{id}`
+  - Retourne une voiture précise selon son identifiant unique
+- `GET /cars/search`
+  - Permet de filtrer par :
+    - `name` → contient un mot-clé comme `dodge`
+    - `origin` → correspondance exacte comme `usa`
+    - `mpg` → filtre numérique comme `<= 20`
+
+### Endpoints d’écriture prévus
+
+Après les premiers endpoints de lecture, l’API prendra aussi en charge la modification des données :
+
+- `POST /cars`
+  - Ajoute une nouvelle entrée dans la base de données
+- `PUT /cars/{id}`
+  - Met à jour une entrée existante selon son ID
+- `DELETE /cars/{id}`
+  - Supprime une entrée existante selon son ID
 
 ---
 
@@ -147,10 +204,9 @@ Passer de zéro à une API en production, tout en maîtrisant :
 
 ---
 
-## 📌 À suivre…
+## 📌 Direction actuelle
 
-Des mises à jour arrivent bientôt. On va voir jusqu’où je peux aller en un peu plus d’un mois !  
-**Défi accepté.**
+Le projet évolue vers une API pratique et orientée données, centrée sur une vraie ressource `Car`, avec des capacités de recherche plus riches et un support CRUD complet.
 
 ---
 
