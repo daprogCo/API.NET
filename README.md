@@ -18,7 +18,7 @@ This project is my personal challenge to break into **C#** and **.NET** developm
 
 ## 🎯 Project Goal
 
-Create a fully functional **API** using **C#** and **.NET**, inspired by the book:  
+Create an **API** using **C#** and **.NET**, inspired by the book:  
 📘 [*Programming APIs with C# and .NET*](https://www.packtpub.com/en-us/product/programming-apis-with-c-and-net-9781803231099) by *Packt*.
 
 The current functional goal is to build a **Car API** backed by SQL Server, exposing the car dataset through clear REST endpoints and preparing the project for production-oriented practices such as CI/CD, containerization, and VPS deployment.
