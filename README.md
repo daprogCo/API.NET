@@ -50,6 +50,8 @@ The first implementation phase focuses on `GET` endpoints:
 
 ### Planned Write Endpoints
 
+After the initial read endpoints, the API will also support data modification:
+
 - `POST /cars`
   - Adds a new entry to the database
 - `PUT /cars/{id}`
@@ -129,7 +131,7 @@ Ce projet est mon défi personnel pour me lancer dans le développement **C#** e
 Créer une **API fonctionnelle** avec **C#** et **.NET**, en suivant le livre :  
 📘 [*Programming APIs with C# and .NET*](https://www.packtpub.com/en-us/product/programming-apis-with-c-and-net-9781803231099) publié par *Packt*.
 
-L’objectif fonctionnel actuel est de construire une **API Car** appuyée sur SQL Server, qui expose le jeu de données des voitures à travers des points d'accès REST clairs, tout en préparant le projet à des pratiques orientées production comme la CI/CD, la conteneurisation et le déploiement sur VPS.
+L’objectif fonctionnel actuel est de construire une **API Car** appuyée sur SQL Server, qui expose le jeu de données des voitures à travers des endpoints REST clairs, tout en préparant le projet à des pratiques orientées production comme la CI/CD, la conteneurisation et le déploiement sur VPS.
 
 ---
 
@@ -142,9 +144,9 @@ La ressource `Car` est le domaine central de ce projet.
 - Toutes les colonnes de la ressource `Car` seront exposées par l’API
 - La seule exception est la colonne `is_deleted`, qui restera interne et ne sera pas exposée publiquement
 
-### Premiers points d'accès de lecture
+### Premiers endpoints de lecture
 
-La première phase d’implantation se concentre sur des points d'accès `GET` :
+La première phase d’implantation se concentre sur des endpoints `GET` :
 
 - `GET /cars`
   - Retourne la liste complète des voitures
@@ -156,9 +158,9 @@ La première phase d’implantation se concentre sur des points d'accès `GET` :
     - `origin` → correspondance exacte comme `usa`
     - `mpg` → filtre numérique comme `<= 20`
 
-### Points d'accès d’écriture prévus
+### Endpoints d’écriture prévus
 
-Après les premiers points d'accès de lecture, l’API prendra aussi en charge la modification des données :
+Après les premiers endpoints de lecture, l’API prendra aussi en charge la modification des données :
 
 - `POST /cars`
   - Ajoute une nouvelle entrée dans la base de données

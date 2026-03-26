@@ -1,3 +1,4 @@
+using dotnet_api.Repositories;
 using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<ICarRepository, SqlCarRepository>();
 
 // Build the app
 var app = builder.Build();
@@ -24,46 +26,13 @@ app.MapGet("/dbtest", async () =>
 
     try
     {
-        using var conn = new SqlConnection(connectionString);
+        await using var conn = new SqlConnection(connectionString);
         await conn.OpenAsync();
         return Results.Ok("✅ dotnet-api CAN connect to SQL Server!");
     }
     catch (Exception ex)
     {
         return Results.Problem("❌ dotnet-api CANNOT connect to SQL Server: " + ex.Message);
-    }
-});
-
-app.MapGet("/cars-test", async () =>
-{
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-    var results = new List<object>();
-
-    try
-    {
-        using var conn = new SqlConnection(connectionString);
-        await conn.OpenAsync();
-
-        var cmd = new SqlCommand("SELECT TOP 5 Id, Name, Mpg, Cylinders FROM Car", conn);
-
-        using var reader = await cmd.ExecuteReaderAsync();
-        while (await reader.ReadAsync())
-        {
-            results.Add(new
-            {
-                Id = reader.GetInt32(0),
-                Name = reader.GetString(1),
-                Mpg = reader.GetDecimal(2),
-                Cylinders = reader.GetInt32(3)
-            });
-        }
-
-        return Results.Ok(results);
-    }
-    catch (Exception ex)
-    {
-        return Results.Problem("❌ Error reading data from SQL Server: " + ex.Message);
     }
 });
 
